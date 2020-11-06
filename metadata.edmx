@@ -21,19 +21,6 @@
                 <Property Name="Phone" Type="Edm.String" MaxLength="24" />
                 <Property Name="Country" Type="Edm.String" />
                 <NavigationProperty FromRole="Supplier" Name="Product" Relationship="SalesModel.FK_Supplier_Product" ToRole="Product"/>
-                <EntityType Name="Product">
-                    <Key>
-                        <PropertyRef Name="Id"/>
-                    </Key>
-                    <Property Name="Id" Type="Edm.Int32" />
-                    <Property Name="Name " Type="Edm.String" MaxLength="40" />
-                    <Property Name="SupplierID" Type="Edm.Int32" />
-                    <Property Name="QuantityPerUnit" Type="Edm.String" MaxLength="20" />
-                    <Property Name="UnitPrice " Type="Edm.Decimal" Precision="19" Scale="2" />
-                    <Property Name="UnitsInStock" Type="Edm.Int16" />
-                    <Property Name="UnitsOnOrder" Type="Edm.Int16" />
-                    <Property Name="Discontinued" Type="Edm.Boolean" />
-                </EntityType>
             </EntityType>
             <EntityType Name="Product">
                 <Key>
@@ -47,7 +34,7 @@
                 <Property Name="UnitsInStock" Type="Edm.Int16" />
                 <Property Name="UnitsOnOrder" Type="Edm.Int16" />
                 <Property Name="Discontinued" Type="Edm.Boolean" />
-            </EntityType>
+            </EntityType>           
             <EntityContainer Name="SalesEntities" m:IsDefaultEntityContainer="true"
                 xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
                 <EntitySet EntityType="SalesModel.Supplier" Name="Suppliers"/>
