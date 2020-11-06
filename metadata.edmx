@@ -35,14 +35,14 @@
                 <Property Name="UnitsOnOrder" Type="Edm.Int16" />
                 <Property Name="Discontinued" Type="Edm.Boolean" />
             </EntityType>
-            <Association Name="FK_Product_Supplier">
-                <End Multiplicity="0..1" Role="Supplier" Type="SalesModel.Supplier"/>
-                <End Multiplicity="*" Role="Product" Type="SalesModel.Product"/>
+            <Association Name="SupplierToProducts">
+                <End Type="SalesModel.Supplier" Multiplicity="0..1" Role="FromRole_SupplierToProducts" />
+                <End Type="SalesModel.Product" Multiplicity="*" Role="ToRole_SupplierToProducts" />
                 <ReferentialConstraint>
-                    <Principal Role="Supplier">
+                    <Principal Role="FromRole_SupplierToProducts">
                         <PropertyRef Name="Id"/>
                     </Principal>
-                    <Dependent Role="Product">
+                    <Dependent Role="ToRole_SupplierToProducts">
                         <PropertyRef Name="SupplierID"/>
                     </Dependent>
                 </ReferentialConstraint>
