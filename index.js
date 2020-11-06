@@ -5,4 +5,4 @@ var b = 2;
 
 var c = a + b;
 
-//console.log(`Output ${c}`);
+console.log(`Output ${c}`);
