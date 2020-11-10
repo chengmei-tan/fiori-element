@@ -34,6 +34,7 @@
                 <Property Name="UnitsInStock" Type="Edm.Int16" />
                 <Property Name="UnitsOnOrder" Type="Edm.Int16" />
                 <Property Name="Discontinued" Type="Edm.Boolean" />
+                <NavigationProperty Name="ProductToOrders" Relationship="SalesModel.ProductToOrders" FromRole="FromRole_ProductToOrders" ToRole="ToRole_ProductToOrders"/>
             </EntityType>
             <Association Name="SupplierToProducts">
                 <End Type="SalesModel.Supplier" Multiplicity="0..1" Role="FromRole_SupplierToProducts" />
