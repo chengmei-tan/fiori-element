@@ -50,6 +50,11 @@
             <EntityContainer Name="SalesEntities" m:IsDefaultEntityContainer="true"
                 xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
                 <EntitySet EntityType="SalesModel.Supplier" Name="Suppliers"/>
+                <EntitySet EntityType="SalesModel.Product" Name="Products"/>
+                <AssociationSet Name="SupplierToProductsSet" Association="SalesModel.SupplierToProducts" >
+                    <End EntitySet="Suppliers" Role="FromRole_SupplierToProducts"/>
+                    <End EntitySet="Products" Role="ToRole_SupplierToProducts"/>
+                </AssociationSet>                  
             </EntityContainer>
         </Schema>
     </edmx:DataServices>
