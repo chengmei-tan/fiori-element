@@ -75,10 +75,15 @@
                 xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
                 <EntitySet EntityType="SalesModel.Supplier" Name="Suppliers"/>
                 <EntitySet EntityType="SalesModel.Product" Name="Products"/>
+                <EntitySet EntityType="SalesModel.Order" Name="Orders"/>
                 <AssociationSet Name="SupplierToProductsSet" Association="SalesModel.SupplierToProducts">
                     <End EntitySet="Suppliers" Role="FromRole_SupplierToProducts"/>
                     <End EntitySet="Products" Role="ToRole_SupplierToProducts"/>
                 </AssociationSet>
+                <AssociationSet Name="ProductToOrdersSet" Association="SalesModel.ProductToOrders">
+                    <End EntitySet="Products" Role="FromRole_ProductToOrders"/>
+                    <End EntitySet="Orders" Role="ToRole_ProductToOrders"/>
+                </AssociationSet>                
             </EntityContainer>
         </Schema>
     </edmx:DataServices>
