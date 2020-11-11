@@ -11,7 +11,7 @@
                 <Key>
                     <PropertyRef Name="Id"/>
                 </Key>
-                <Property Name="Id" Type="Edm.Int32" />
+                <Property Name="Id" Type="Edm.Int32" Nullable="false" />
                 <Property Name="Name" Type="Edm.String" MaxLength="40" />
                 <Property Name="Category" Type="Edm.String" MaxLength="20" />
                 <Property Name="Address" Type="Edm.String" MaxLength="50" />
@@ -20,28 +20,28 @@
                 <Property Name="Country" Type="Edm.String" MaxLength="15" />
                 <Property Name="Phone" Type="Edm.String" MaxLength="24" />
                 <Property Name="Website" Type="Edm.String" />
-                <NavigationProperty Name="SupplierToProducts" Relationship="SalesModel.SupplierToProducts" FromRole="FromRole_SupplierToProducts" ToRole="ToRole_SupplierToProducts"/>
+                <NavigationProperty Name="ToProducts" Relationship="SalesModel.SupplierToProducts" FromRole="FromRole_SupplierToProducts" ToRole="ToRole_SupplierToProducts"/>
             </EntityType>
             <EntityType Name="Product">
                 <Key>
                     <PropertyRef Name="Id"/>
                 </Key>
-                <Property Name="Id" Type="Edm.Int32" />
+                <Property Name="Id" Type="Edm.Int32" Nullable="false" />
                 <Property Name="Name" Type="Edm.String" MaxLength="40" />
-                <Property Name="SupplierID" Type="Edm.Int32" />
+                <Property Name="SupplierId" Type="Edm.Int32" />
                 <Property Name="QuantityPerUnit" Type="Edm.String" MaxLength="20" />
                 <Property Name="UnitPrice" Type="Edm.Decimal" Precision="19" Scale="2" />
                 <Property Name="UnitsInStock" Type="Edm.Int16" />
                 <Property Name="UnitsOnOrder" Type="Edm.Int16" />
                 <Property Name="Discontinued" Type="Edm.Boolean" />
-                <NavigationProperty Name="ProductToOrders" Relationship="SalesModel.ProductToOrders" FromRole="FromRole_ProductToOrders" ToRole="ToRole_ProductToOrders"/>
+                <NavigationProperty Name="ToOrders" Relationship="SalesModel.ProductToOrders" FromRole="FromRole_ProductToOrders" ToRole="ToRole_ProductToOrders"/>
             </EntityType>
             <EntityType Name="Order">
                 <Key>
                     <PropertyRef Name="Id"/>
                 </Key>
-                <Property Name="Id" Type="Edm.Int32" />
-                <Property Name="ProductID" Type="Edm.Int32" />
+                <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+                <Property Name="ProductId" Type="Edm.Int32" />
                 <Property Name="CustomerName" Type="Edm.String" MaxLength="40" />
                 <Property Name="OrderDate" Type="Edm.DateTime" />
                 <Property Name="ShippedDate" Type="Edm.DateTime" />
@@ -55,7 +55,7 @@
                         <PropertyRef Name="Id"/>
                     </Principal>
                     <Dependent Role="ToRole_SupplierToProducts">
-                        <PropertyRef Name="SupplierID"/>
+                        <PropertyRef Name="SupplierId"/>
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
@@ -67,7 +67,7 @@
                         <PropertyRef Name="Id"/>
                     </Principal>
                     <Dependent Role="ToRole_ProductToOrders">
-                        <PropertyRef Name="ProductID"/>
+                        <PropertyRef Name="ProductId"/>
                     </Dependent>
                 </ReferentialConstraint>
             </Association>            
