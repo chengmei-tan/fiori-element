@@ -25,6 +25,7 @@
                 </Key>
                 <Property Name="Id" Type="Edm.Int32" Nullable="false" />
                 <Property Name="Name" Type="Edm.String" MaxLength="40" />
+                <Property Name="CountryId" Type="Edm.String" MaxLength="5" />
                 <Property Name="Category" Type="Edm.String" MaxLength="20" />
                 <Property Name="Address" Type="Edm.String" MaxLength="50" />
                 <Property Name="City" Type="Edm.String" MaxLength="15" />
