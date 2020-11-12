@@ -154,7 +154,8 @@
                 xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.Label" String="Phone" />
             </Annotations>
-            <Annotations Target="SalesModel.Supplier/CountryId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="SalesModel.Supplier/CountryId"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record Type="Common.ValueListType">
                         <PropertyValue Property="Label" String="Countries"/>
@@ -175,7 +176,8 @@
                 </Annotation>
                 <Annotation Term="Common.ValueListWithFixedValues" Bool="true" />
             </Annotations>
-            <Annotations Target="SalesModel.VH_Country/Code"  xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="SalesModel.VH_Country/Code"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.Text" Path="Text"/>
             </Annotations>
             <Annotations Target="SalesModel.SalesEntities/Suppliers"
