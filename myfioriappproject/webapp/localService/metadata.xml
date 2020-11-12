@@ -59,14 +59,14 @@
                 <Property Name="OrderDate" Type="Edm.DateTime" />
                 <Property Name="ShippedDate" Type="Edm.DateTime" />
                 <Property Name="ShipVia" Type="Edm.String" MaxLength="15" />
-            </EntityType>  
+            </EntityType>
             <EntityType Name="VH_Country">
                 <Key>
                     <PropertyRef Name="Code"/>
                 </Key>
                 <Property Name="Code" Type="Edm.String" MaxLength="5" Nullable="false" />
                 <Property Name="Text" Type="Edm.String" MaxLength="20" />
-            </EntityType>                     
+            </EntityType>
             <Association Name="SupplierToProducts">
                 <End Type="SalesModel.Supplier" Multiplicity="0..1" Role="FromRole_SupplierToProducts" />
                 <End Type="SalesModel.Product" Multiplicity="*" Role="ToRole_SupplierToProducts" />
@@ -113,7 +113,6 @@
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="Name" />
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
-                            <PropertyValue Property="Label" Path="@Common.Label" />
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="Category"/>
@@ -127,6 +126,11 @@
                             <PropertyValue Property="Value" Path="Phone" />
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>CountryId</PropertyPath>
                     </Collection>
                 </Annotation>
             </Annotations>
@@ -150,18 +154,43 @@
                 xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.Label" String="Phone" />
             </Annotations>
-            <Annotations Target="SalesModel.SalesEntities/Suppliers" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="SalesModel.Supplier/CountryId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="Countries"/>
+                        <PropertyValue Property="CollectionPath" String="VH_Countries" />
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CountryId"/>
+                                    <PropertyValue Property="ValueListProperty" String="Code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues" Bool="true" />
+            </Annotations>
+            <Annotations Target="SalesModel.VH_Country/Code"  xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Text" Path="Text"/>
+            </Annotations>
+            <Annotations Target="SalesModel.SalesEntities/Suppliers"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.InsertRestrictions">
                     <Record Type="Capabilities.InsertRestrictionsType">
                         <PropertyValue Property="Insertable" Bool="false"/>
                     </Record>
                 </Annotation>
-                <Annotation Term="Capabilities.UpdateRestrictions" >
+                <Annotation Term="Capabilities.UpdateRestrictions">
                     <Record Type="Capabilities.UpdateRestrictionsType">
                         <PropertyValue Property="Updatable" Bool="false"/>
                     </Record>
                 </Annotation>
-                <Annotation Term="Capabilities.DeleteRestrictions" >
+                <Annotation Term="Capabilities.DeleteRestrictions">
                     <Record Type="Capabilities.DeleteRestrictionsType">
                         <PropertyValue Property="Deletable" Bool="false"/>
                     </Record>
