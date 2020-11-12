@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<edmx:Edmx Version="1.0"
+xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+<edmx:DataServices m:DataServiceVersion="2.0"
+xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+<Schema Namespace="SalesModel"
+xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+<EntityType Name="Supplier">
+    <Key>
+        <PropertyRef Name="Id"/>
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+    <Property Name="Name" Type="Edm.String" MaxLength="40" />
+    <Property Name="Category" Type="Edm.String" MaxLength="20" />
+    <Property Name="Address" Type="Edm.String" MaxLength="50" />
+    <Property Name="City" Type="Edm.String" MaxLength="15" />
+    <Property Name="PostalCode" Type="Edm.String" MaxLength="10" />
+    <Property Name="Country" Type="Edm.String" MaxLength="15" />
+    <Property Name="Phone" Type="Edm.String" MaxLength="24" />
+    <Property Name="Website" Type="Edm.String" />
+    <NavigationProperty Name="ToProducts" Relationship="SalesModel.SupplierToProducts" FromRole="FromRole_SupplierToProducts" ToRole="ToRole_SupplierToProducts"/>
+</EntityType>
+<EntityType Name="Product">
+    <Key>
+        <PropertyRef Name="Id"/>
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+    <Property Name="Name" Type="Edm.String" MaxLength="40" />
+    <Property Name="SupplierId" Type="Edm.Int32" />
+    <Property Name="QuantityPerUnit" Type="Edm.String" MaxLength="20" />
+    <Property Name="UnitPrice" Type="Edm.Decimal" Precision="19" Scale="2" />
+    <Property Name="UnitsInStock" Type="Edm.Int16" />
+    <Property Name="UnitsOnOrder" Type="Edm.Int16" />
+    <Property Name="Discontinued" Type="Edm.Boolean" />
+    <NavigationProperty Name="ToOrders" Relationship="SalesModel.ProductToOrders" FromRole="FromRole_ProductToOrders" ToRole="ToRole_ProductToOrders"/>
+</EntityType>
+<EntityType Name="Order">
+    <Key>
+        <PropertyRef Name="Id"/>
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Edm.Int32" />
+    <Property Name="CustomerName" Type="Edm.String" MaxLength="40" />
+    <Property Name="OrderDate" Type="Edm.DateTime" />
+    <Property Name="ShippedDate" Type="Edm.DateTime" />
+    <Property Name="ShipVia" Type="Edm.String" MaxLength="15" />
+</EntityType>
+<Association Name="SupplierToProducts">
+    <End Type="SalesModel.Supplier" Multiplicity="0..1" Role="FromRole_SupplierToProducts" />
+    <End Type="SalesModel.Product" Multiplicity="*" Role="ToRole_SupplierToProducts" />
+    <ReferentialConstraint>
+        <Principal Role="FromRole_SupplierToProducts">
+            <PropertyRef Name="Id"/>
+        </Principal>
+        <Dependent Role="ToRole_SupplierToProducts">
+            <PropertyRef Name="SupplierId"/>
+        </Dependent>
+    </ReferentialConstraint>
+</Association>
+<Association Name="ProductToOrders">
+    <End Type="SalesModel.Product" Multiplicity="0..1" Role="FromRole_ProductToOrders" />
+    <End Type="SalesModel.Order" Multiplicity="*" Role="ToRole_ProductToOrders" />
+    <ReferentialConstraint>
+        <Principal Role="FromRole_ProductToOrders">
+            <PropertyRef Name="Id"/>
+        </Principal>
+        <Dependent Role="ToRole_ProductToOrders">
+            <PropertyRef Name="ProductId"/>
+        </Dependent>
+    </ReferentialConstraint>
+</Association>
+<EntityContainer Name="SalesEntities" m:IsDefaultEntityContainer="true"
+xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+<EntitySet EntityType="SalesModel.Supplier" Name="Suppliers"/>
+<EntitySet EntityType="SalesModel.Product" Name="Products"/>
+<EntitySet EntityType="SalesModel.Order" Name="Orders"/>
+<AssociationSet Name="SupplierToProductsSet" Association="SalesModel.SupplierToProducts">
+    <End EntitySet="Suppliers" Role="FromRole_SupplierToProducts"/>
+    <End EntitySet="Products" Role="ToRole_SupplierToProducts"/>
+</AssociationSet>
+<AssociationSet Name="ProductToOrdersSet" Association="SalesModel.ProductToOrders">
+    <End EntitySet="Products" Role="FromRole_ProductToOrders"/>
+    <End EntitySet="Orders" Role="ToRole_ProductToOrders"/>
+</AssociationSet>
+</EntityContainer>
+</Schema>
+</edmx:DataServices>
+</edmx:Edmx>
