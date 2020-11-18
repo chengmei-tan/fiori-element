@@ -180,7 +180,7 @@
                         </Record>
                     </Collection>
                 </Annotation>
-                <Annotation Term="UI.Facets" >
+                <Annotation Term="UI.Facets">
                     <Collection>
                         <Record Type="UI.ReferenceFacet">
                             <PropertyValue Property="Target" AnnotationPath="ToProducts/@UI.LineItem"/>
@@ -240,8 +240,9 @@
                 xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.Label" String="Website" />
             </Annotations>
-            <Annotations Target="SalesModel.Product" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="UI.LineItem" >
+            <Annotations Target="SalesModel.Product"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.LineItem">
                     <Collection>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="Name"/>
@@ -260,6 +261,26 @@
                         </Record>
                     </Collection>
                 </Annotation>
+            </Annotations>
+            <Annotations Target="SalesModel.Product/Name"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Product" />
+            </Annotations>
+            <Annotations Target="SalesModel.Product/UnitsInStock"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Units In Stock" />
+            </Annotations>
+            <Annotations Target="SalesModel.Product/UnitPrice"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Unit Price" />
+            </Annotations>
+            <Annotations Target="SalesModel.Product/Discontinued"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Discontinued" />
+            </Annotations>
+            <Annotations Target="SalesModel.Product/QuantityPerUnit"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Quantity Per Unit" />
             </Annotations>
             <Annotations Target="SalesModel.VH_Country/Code"
                 xmlns="http://docs.oasis-open.org/odata/ns/edm">
