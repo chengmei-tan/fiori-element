@@ -40,7 +40,7 @@
                 <Property Name="LogoPath" Type="Edm.String" MaxLength="255" />
                 <Property Name="ContactPersonId" Type="Edm.Int32" Nullable="true" />
                 <NavigationProperty Name="ToProducts" Relationship="SalesModel.SupplierToProducts" FromRole="FromRole_SupplierToProducts" ToRole="ToRole_SupplierToProducts"/>
-                <NavigationProperty Name="ToContactPersons" Relationship="SalesModel.SupplierToContactPersons" FromRole="FromRole_SupplierToContactPersons" ToRole="ToRole_SupplierToContactPersons"/>
+                <NavigationProperty Name="ToContactPerson" Relationship="SalesModel.SupplierToContactPerson" FromRole="FromRole_SupplierToContactPerson" ToRole="ToRole_SupplierToContactPerson"/>
             </EntityType>
             <EntityType Name="Product">
                 <Key>
@@ -109,14 +109,14 @@
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
-            <Association Name="SupplierToContactPersons">
-                <End Type="SalesModel.Supplier" Multiplicity="0..1" Role="FromRole_SupplierToContactPersons" />
-                <End Type="SalesModel.ContactPerson" Multiplicity="*" Role="ToRole_SupplierToContactPersons" />
+            <Association Name="SupplierToContactPerson">
+                <End Type="SalesModel.Supplier" Multiplicity="0..1" Role="FromRole_SupplierToContactPerson" />
+                <End Type="SalesModel.ContactPerson" Multiplicity="*" Role="ToRole_SupplierToContactPerson" />
                 <ReferentialConstraint>
-                    <Principal Role="FromRole_SupplierToContactPersons">
+                    <Principal Role="FromRole_SupplierToContactPerson">
                         <PropertyRef Name="ContactPersonId"/>
                     </Principal>
-                    <Dependent Role="ToRole_SupplierToContactPersons">
+                    <Dependent Role="ToRole_SupplierToContactPerson">
                         <PropertyRef Name="Id"/>
                     </Dependent>
                 </ReferentialConstraint>
@@ -132,9 +132,9 @@
                     <End EntitySet="Suppliers" Role="FromRole_SupplierToProducts"/>
                     <End EntitySet="Products" Role="ToRole_SupplierToProducts"/>
                 </AssociationSet>
-                <AssociationSet Name="SupplierToContactPersonsSet" Association="SalesModel.SupplierToContactPersons">
-                    <End EntitySet="Suppliers" Role="FromRole_SupplierToContactPersons"/>
-                    <End EntitySet="ContactPersons" Role="ToRole_SupplierToContactPersons"/>
+                <AssociationSet Name="SupplierToContactPersonSet" Association="SalesModel.SupplierToContactPerson">
+                    <End EntitySet="Suppliers" Role="FromRole_SupplierToContactPerson"/>
+                    <End EntitySet="Contacts" Role="ToRole_SupplierToContactPerson"/>
                 </AssociationSet>                
                 <AssociationSet Name="ProductToOrdersSet" Association="SalesModel.ProductToOrders">
                     <End EntitySet="Products" Role="FromRole_ProductToOrders"/>
