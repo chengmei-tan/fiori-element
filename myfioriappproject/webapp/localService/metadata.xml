@@ -68,6 +68,16 @@
                 <Property Name="ShippedDate" Type="Edm.DateTime" />
                 <Property Name="ShipVia" Type="Edm.String" MaxLength="15" />
             </EntityType>
+            <EntityType Name="ContactPerson">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+                <Property Name="Name" Type="Edm.String" MaxLength="30" />
+                <Property Name="Title" Type="Edm.String" MaxLength="30" />
+                <Property Name="Email" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Phone" Type="Edm.String" MaxLength="24" />
+            </EntityType>            
             <EntityType Name="VH_Country">
                 <Key>
                     <PropertyRef Name="Code"/>
