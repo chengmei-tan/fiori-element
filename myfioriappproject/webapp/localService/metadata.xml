@@ -109,16 +109,33 @@
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
+            <Association Name="SupplierToContactPerson">
+                <End Type="SalesModel.Supplier" Multiplicity="0..1" Role="FromRole_SupplierToContactPerson" />
+                <End Type="SalesModel.ContactPerson" Multiplicity="*" Role="ToRole_SupplierToContactPerson" />
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SupplierToContactPerson">
+                        <PropertyRef Name="ContactPersonId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SupplierToContactPerson">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>            
             <EntityContainer Name="SalesEntities" m:IsDefaultEntityContainer="true"
                 xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
                 <EntitySet EntityType="SalesModel.Supplier" Name="Suppliers"/>
                 <EntitySet EntityType="SalesModel.Product" Name="Products"/>
                 <EntitySet EntityType="SalesModel.Order" Name="Orders"/>
+                <EntitySet EntityType="SalesModel.ContactPerson" Name="Contacts"/>
                 <EntitySet EntityType="SalesModel.VH_Country" Name="VH_Countries"/>
                 <AssociationSet Name="SupplierToProductsSet" Association="SalesModel.SupplierToProducts">
                     <End EntitySet="Suppliers" Role="FromRole_SupplierToProducts"/>
                     <End EntitySet="Products" Role="ToRole_SupplierToProducts"/>
                 </AssociationSet>
+                <AssociationSet Name="SupplierToContactPersonSet" Association="SalesModel.SupplierToContactPerson">
+                    <End EntitySet="Suppliers" Role="FromRole_SupplierToContactPerson"/>
+                    <End EntitySet="Contacts" Role="ToRole_SupplierToContactPerson"/>
+                </AssociationSet>                
                 <AssociationSet Name="ProductToOrdersSet" Association="SalesModel.ProductToOrders">
                     <End EntitySet="Products" Role="FromRole_ProductToOrders"/>
                     <End EntitySet="Orders" Role="ToRole_ProductToOrders"/>
