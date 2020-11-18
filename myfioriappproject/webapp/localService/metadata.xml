@@ -38,7 +38,9 @@
                 <Property Name="Phone" Type="Edm.String" MaxLength="24" />
                 <Property Name="Website" Type="Edm.String" />
                 <Property Name="LogoPath" Type="Edm.String" MaxLength="255" />
+                <Property Name="ContactPersonId" Type="Edm.Int32" Nullable="true" />
                 <NavigationProperty Name="ToProducts" Relationship="SalesModel.SupplierToProducts" FromRole="FromRole_SupplierToProducts" ToRole="ToRole_SupplierToProducts"/>
+                <NavigationProperty Name="ToContactPerson" Relationship="SalesModel.SupplierToContactPerson" FromRole="FromRole_SupplierToContactPerson" ToRole="ToRole_SupplierToContactPerson"/>
             </EntityType>
             <EntityType Name="Product">
                 <Key>
