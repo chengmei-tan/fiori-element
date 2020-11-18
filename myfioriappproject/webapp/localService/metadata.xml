@@ -112,6 +112,10 @@
                 <Annotation Term="UI.LineItem">
                     <Collection>
                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="LogoPath"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="Name" />
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>
@@ -140,6 +144,10 @@
                         <PropertyValue Property="TypeNamePlural" String="Suppliers" />
                     </Record>
                 </Annotation>
+            </Annotations>
+            <Annotations Target="SalesModel.Supplier/LogoPath"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.IsImageURL" />
             </Annotations>
             <Annotations Target="SalesModel.Supplier/Name"
                 xmlns="http://docs.oasis-open.org/odata/ns/edm">
