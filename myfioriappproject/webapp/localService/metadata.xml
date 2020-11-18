@@ -155,6 +155,30 @@
                         <PropertyValue Property="TypeImageUrl" Path="LogoPath"/>
                     </Record>
                 </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="GeneralInformation">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Category"/>
+                                </Record>
+                                <Record Type="UI.DataFieldWithUrl">
+                                    <PropertyValue Property="Url" Path="Website"/>
+                                    <PropertyValue Property="Value" Path="Website"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GeneralInformation"/>
+                            <PropertyValue Property="Label" String="General Information"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
             </Annotations>
             <Annotations Target="SalesModel.Supplier/LogoPath"
                 xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -201,6 +225,10 @@
                     </Record>
                 </Annotation>
                 <Annotation Term="Common.ValueListWithFixedValues" Bool="true" />
+            </Annotations>
+            <Annotations Target="SalesModel.Supplier/Website"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Website" />
             </Annotations>
             <Annotations Target="SalesModel.VH_Country/Code"
                 xmlns="http://docs.oasis-open.org/odata/ns/edm">
