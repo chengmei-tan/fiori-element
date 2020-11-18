@@ -126,7 +126,7 @@
                 <EntitySet EntityType="SalesModel.Supplier" Name="Suppliers"/>
                 <EntitySet EntityType="SalesModel.Product" Name="Products"/>
                 <EntitySet EntityType="SalesModel.Order" Name="Orders"/>
-                <EntitySet EntityType="SalesModel.ContactPerson" Name="Contacts"/>
+                <EntitySet EntityType="SalesModel.ContactPerson" Name="ContactPersons"/>
                 <EntitySet EntityType="SalesModel.VH_Country" Name="VH_Countries"/>
                 <AssociationSet Name="SupplierToProductsSet" Association="SalesModel.SupplierToProducts">
                     <End EntitySet="Suppliers" Role="FromRole_SupplierToProducts"/>
