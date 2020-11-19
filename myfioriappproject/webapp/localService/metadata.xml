@@ -82,6 +82,7 @@
                 <Property Name="Title" Type="Edm.String" MaxLength="30" />
                 <Property Name="Email" Type="Edm.String" MaxLength="30"/>
                 <Property Name="Phone" Type="Edm.String" MaxLength="24" />
+                <Property Name="ImagePath" Type="Edm.String" MaxLength="255" />
             </EntityType>
             <EntityType Name="VH_Country">
                 <Key>
