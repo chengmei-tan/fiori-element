@@ -354,6 +354,7 @@
                 xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Communication.Contact">
                     <Record Type="Communication.ContactType">
+                        <PropertyValue Property="photo" Path="ImagePath"/>
                         <PropertyValue Property="fn" Path="Name"/>
                         <PropertyValue Property="title" Path="Title"/>
                         <PropertyValue Property="email">
